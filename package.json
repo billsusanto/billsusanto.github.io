@@ -3,17 +3,23 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://billsusanto.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@react-three/drei": "^9.76.0",
     "@react-three/fiber": "^8.13.3",
     "framer-motion": "^10.12.16",
+    "gh-pages": "^6.0.0",
     "http-proxy-middleware": "^2.0.6",
     "maath": "^0.6.0",
     "react-chatbot-kit": "^2.1.2",
