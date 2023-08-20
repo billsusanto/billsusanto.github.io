@@ -41,6 +41,7 @@ const Introduction = () => {
       <div className={`crawl ${showScrollText ? "hide" : ""}`}>
         <p>Greetings Cyber Traveller,</p>
         <p>My name is Bill</p>
+        <p>I am an aspiring Software Engineer</p>
         {/* <p>In a universe where dreams take flight,</p>
         <p>I, a passionate soul, forge my own destiny.</p>
         <p>Embracing the power of Javascript,</p>
