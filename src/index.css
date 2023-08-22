@@ -148,7 +148,7 @@ body {
 }
 
 .crawl {
-  animation: crawl-animation 60s linear;
+  animation: crawl-animation 30s linear;
   color: white;
   width: 80%; /* Adjust the width to your preference */
   max-width: 900px; /* Set a maximum width for the text */
@@ -250,4 +250,30 @@ body {
   transform: rotateY(180deg);
   background-color: #f5f5f5;
   color: #000;
+}
+
+.service-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-media-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 10vh; /* Adjust the height as needed */
+}
+
+.social-media-icons {
+  display: flex;
+  flex-direction: row; /* Stack icons vertically */
+  gap: 25px;
+  text-align: center;
+}
+
+.social-media-icon img {
+  width: 40px;
+  height: 40px;
 }

@@ -11,7 +11,6 @@ import armory from "./armory.png";
 import cityskyline from "./City Skyline.png";
 import spaceship from "./spaceship.png";
 
-import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -47,6 +46,16 @@ import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import instagram from "./instagram.svg";
+import linkedin from "./linkedin.svg";
+import github from "./github.svg";
+import calendy from "./calendy.svg";
+
+import sis from "./sis.png";
+import nyjc from "./nyjc.png";
+import pcc from "./pcc.png";
+import uci from "./uci.png";
+
 export {
   logo,
   backend,
@@ -61,7 +70,6 @@ export {
   cityskyline,
   spaceship,
 
-  github,
   menu,
   close,
 
@@ -95,4 +103,14 @@ export {
   csharp,
   java,
   golang,
+
+  instagram,
+  linkedin,
+  github,
+  calendy,
+
+  sis,
+  nyjc,
+  pcc,
+  uci
 };

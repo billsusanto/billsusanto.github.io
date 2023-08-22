@@ -6,6 +6,7 @@ import { services } from '../constants';
 import { fadeIn } from '../utils/motion';
 
 import { armory } from "../assets";
+import "../index.css";
 
 const ServiceCard = ({ index, title, icon, back }) => {
   const [flipped, setFlipped] = useState(false);
@@ -15,7 +16,7 @@ const ServiceCard = ({ index, title, icon, back }) => {
   };
 
   return (
-    <Tilt className="xs:w-[250px] w-full">
+    <Tilt className="xs:w-[250px] xs:h-[300px] w-full">
       <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)} className='w-full p-[1px] rounded-[20px] shadow-card' onClick={handleClick}>
         <div className={`flip-card ${flipped ? 'flipped' : ''}`}>
           <div className="flip-card-inner">
@@ -23,7 +24,7 @@ const ServiceCard = ({ index, title, icon, back }) => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className='front-content bg-teal rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+                className='front-content bg-teal rounded-[30px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
               >
                 <img src={icon} alt={title} className='w-40 h-40 object-contain' />
                 <h3 className='text-white text-[20px] font-bold text-center'>{title}</h3>
@@ -47,7 +48,7 @@ const ServiceCard = ({ index, title, icon, back }) => {
 
 const About = () => {
   return (
-    <div className="mt-20 mx-auto w-4/5 min-h-screen bg-cover bg-no-repeat bg-center rounded-2xl" style={{ backgroundImage: `url(${armory})` }}>
+    <div id="About" className="mt-20 mx-auto w-4/5 min-h-screen bg-cover bg-no-repeat bg-center rounded-2xl" style={{ backgroundImage: `url(${armory})` }}>
       <div className="w-full flex flex-col justify-end">
 
           <h2 className="text-white font-bold text-6xl">

@@ -9,14 +9,14 @@ const Introduction = () => {
   const [showSpaceship, setShowSpaceship] = useState(false);
 
   useEffect(() => {
-    const crawlAnimationDuration = 15 * 1000; // Duration of crawl animation in milliseconds
+    const crawlAnimationDuration = 10 * 1000; // Duration of crawl animation in milliseconds
     const timeout = setTimeout(() => {
       setShowScrollText(true);
     }, crawlAnimationDuration);
 
     const spaceshipTimeout = setTimeout(() => {
       setShowSpaceship(true);
-    }, 15000); // Show spaceship after 15 seconds
+    }, 9000); // Show spaceship after 10 seconds
 
     if (isClicked) {
       const timeout2 = setTimeout(() => {
@@ -35,22 +35,30 @@ const Introduction = () => {
     };
   }, [isClicked]);
 
+  const handleSpaceshipClick = () => {
+    setIsClicked(true);
+
+    setTimeout(() => {
+      const targetSection = document.getElementById("About");
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+      }
+      setShowSpaceship(false);
+    }, 2000);
+  };
+
   return (
     <div className="introduction">
       <StarsCanvas />
       <div className={`crawl ${showScrollText ? "hide" : ""}`}>
         <p>Greetings Cyber Traveller,</p>
         <p>My name is Bill</p>
-        <p>I am an aspiring Software Engineer</p>
-        {/* <p>In a universe where dreams take flight,</p>
-        <p>I, a passionate soul, forge my own destiny.</p>
-        <p>Embracing the power of Javascript,</p>
-        <p>I navigate the ever-expanding cosmos of development.</p>
-        <p>With each line of code, I shape my visions into reality.</p>
-        <p>Through countless challenges and moments of inspiration,</p>
-        <p>I strive to master the art of crafting immersive experiences.</p>
-        <p>Join me on this extraordinary odyssey,</p>
-        <p>as we transcend boundaries and bring ideas to life.</p> */}
+        <p>Welcome to my digital realm,</p>
+        <p>Where code becomes art,</p>
+        <p>And pixels tell stories.</p>
+        <p>Join me on this journey</p>
+        <p>Through the realm of algorithms</p>
+        <p>And the landscapes of creativity.</p>
       </div>
 
       {showSpaceship && (
@@ -58,12 +66,12 @@ const Introduction = () => {
           src={spaceship}
           alt="Spaceship"
           className={`spaceship ${isClicked ? "crawl-bottom" : ""}`}
-          onClick={() => setIsClicked(true)}
+          onClick={handleSpaceshipClick}
         />
       )}
 
       {showScrollText && (
-        <p className="scroll-text">Scroll Down to Start Adventure</p>
+        <p className="scroll-text">Click the Ship to<br/>Start Adventure</p>
       )}
     </div>
   );
