@@ -16,7 +16,7 @@ const ServiceCard = ({ index, title, icon, back }) => {
   };
 
   return (
-    <Tilt className="sm:w-[250px] xs:w-[250px] xs:h-[300px] w-full">
+    <Tilt className="sm:w-[150px] sm:h-[200px] xs:w-[250px] xs:h-[300px] w-full">
       <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)} className='w-full p-[1px] rounded-[20px] shadow-card' onClick={handleClick}>
         <div className={`flip-card ${flipped ? 'flipped' : ''}`}>
           <div className="flip-card-inner">
