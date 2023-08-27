@@ -277,3 +277,17 @@ body {
   width: 40px;
   height: 40px;
 }
+
+@media (max-width: 767px) {
+  .service-card-container {
+    justify-content: flex-start; /* Align cards to the start */
+    flex-direction: row; /* Stack cards vertically */
+    align-items: center; /* Center horizontally */
+  }
+
+  .service-card {
+    margin: 10px 0; /* Add spacing between cards */
+    width: 100%; /* Adjust the width as needed */
+    max-width: 250px; /* Set a maximum width for the cards */
+  }
+}
