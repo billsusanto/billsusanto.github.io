@@ -34,7 +34,10 @@ const Navbar = () => {
               className={`${active === Link.title ? "text-white" : "text-white"} hover:text-white text-[15px] font-karla cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
-              {Link.id === "resume" ? (
+              {Link.id === "billybot" ? (
+                <a href="https://billybot-iota.vercel.app/" target="_blank" rel="noopener noreferrer">Billybot</a>
+              ) :
+              Link.id === "resume" ? (
                 <a href="https://drive.google.com/file/d/1RfRfblU9LEnb7wrLCY31gCEYKdUwi0qU/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
               ) : (
                 <a href={`#${Link.id}`}>{Link.title}</a>
@@ -57,7 +60,7 @@ const Navbar = () => {
                   key={Link.id}
                   className={`${active === Link.title ? "text-black" : "text-black"} font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
-                    if (Link.id === "instagram" || Link.id === "resume") {
+                    if (Link.id === "billybot" || Link.id === "resume") {
                       handleLinkClick(Link);
                     } else {
                       setActive(Link.title);
@@ -65,7 +68,15 @@ const Navbar = () => {
                     setToggle(false);
                   }}
                 >
-                  <a href={`#${Link.id}`}>{Link.title}</a>
+                  {Link.id === "billybot" ? (
+                    <a href="https://billybot-iota.vercel.app/" target="_blank" rel="noopener noreferrer">Billybot</a>
+                  ) :
+                  Link.id === "resume" ? (
+                    <a href="https://drive.google.com/file/d/1RfRfblU9LEnb7wrLCY31gCEYKdUwi0qU/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+                  ) : (
+                    <a href={`#${Link.id}`}>{Link.title}</a>
+                  )}
+                  {/* <a href={`#${Link.id}`}>{Link.title}</a> */}
                 </li>
               ))}
             </ul>
