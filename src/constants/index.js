@@ -34,6 +34,10 @@ import {
   
   export const navLinks = [
     {
+      id: 'coba',
+      title: "Coba",
+    },
+    {
       id: "billybot",
       title: "Billybot",
     },
@@ -62,12 +66,12 @@ import {
     {
       title: "Discipline",
       icon: discipline,
-      back: "I show strong control at work, strictly following instructions and tasks for steady, good results"
+      back: "I show control at work, strictly following instructions and tasks for steady, good results"
     },
     {
       title: "Teamwork",
       icon: teamwork,
-      back: "I am an adept communicator and a dedicated problem solver, contributing to cohesive teamwork"
+      back: "I am a great communicator and a dedicated problem solver"
     },
   ];
   
@@ -120,22 +124,25 @@ import {
       company_name: "Bachelor's Degree in Computer Science",
       icon: uci,
       iconBg: "#000000",
-      date: "September 2023 - Ongoing",
+      date: "September 2023 - June 2025",
       points: [
-        "Projects: Website Portfolio https://billsusanto.github.io/"
+        "Relevant Coursework: Data Structures & Algorithms, Machine Learning, Artificial Intelligence",
+        "Coba (https://github.com/billsusanto/Coba): Spearheaded the development of a collaborative matchmaking platform designed to enhance student project engagement.",
+        "Billybot (https://billybot-v1.vercel.app/): Designed and developed an AI chatbot using Next.js and OpenAI API, providing detailed information about my achievements and contributions.",
+        "CocoaPods (https://cocoapods.reflex.run/): Leveraged Reflex framework to enhance CocoaPods' UI/UX, resulting in streamlined navigation.",
+        "TheraAI (https://github.com/billsusanto/TheraAI): Integrated OpenCV with the HUME API on the backend using Flask, enabling real-time emotion detection and response through visual inputs",
+        "Website Portfolio (https://billsusanto.github.io/): Overcame challenges in crafting an interactive portfolio using Javascript, React.js and Node.js, showcasing my journey through creative coding and innovative projects."
       ],
     },
     {
-      title: "Youth Coding Coach",
+      title: "Coding Mentor",
       company_name: "theCoderSchool",
       icon: thecoderschool,
       iconBg: "#000000",
       date: "August 2022 - January 2023",
       points: [
-        "Developing and maintaining Introduction Courses using Scratch and other related technologies.",
-        "Collaborating with coaches to create innovative educational content.",
-        "Designed child friendly introductory courses for C#, C++ and Python.",
-        "Participating in Summer Bootcamps including mbot bootcamp and 3D printing bootcamp.",
+        "Mentored students in Python, C++, and C#, achieving a 95% satisfaction rate and enhancing their coding skills through immersive, hands-on projects.",
+        "Spearheaded the development of projects in Unity and Roblox Studio, increasing student engagement by 40% and improving coding proficiency by 30%."
       ],
     },
     {
@@ -158,9 +165,9 @@ import {
       iconBg: "#fff",
       date: "Jan 2020 - Nov 2021",
       points: [
-        "Developing and maintaining hygiene and discipline.",
-        "Implementing military tactics on the ground.",
-        "Participating in large scale military exercises.",
+        "Completed mandatory National Service, a cornerstone of Singapore’s defense policy, which requires all male citizens to serve in the military for two years, gaining valuable skills in leadership, discipline, and teamwork essential for national security.",
+        "Demonstrated exceptional leadership as Company Sergeant Major, ensuring adherence to company discipline and routines.",
+        "Led initiatives that secured the prestigious recognition of \"2021 Best Combat Unit\" within the Singapore Armed Forces.",
       ],
     },
     {
@@ -182,7 +189,9 @@ import {
       iconBg: "#000000",
       date: "January 2018 - December 2019",
       points: [
-        "A-levels Subjects	: Computing, Physics, Mathematics, Economics, General Paper"
+        "A-levels Subjects	: Computing, Physics, Mathematics, Economics, General Paper",
+        "Competed in an mBot Maze Racing competition, where I coded in Python as part of a team, and secured third place through effective collaboration and problem-solving.",
+        "Volunteered as a peer tutor, providing academic support in Mathematics and Physics to fellow students, helping them improve their understanding and performance in these subjects.",
       ],
     },
     {
@@ -192,7 +201,10 @@ import {
       iconBg: "#000000",
       date: "January 2009 - December 2017",
       points: [
-        
+        "Achieved a Distinction Award with outstanding IGCSE results, earning 8 A’s, placing me in the top 8 students in school.",
+        "Led a school-wide fundraising initiative in collaboration with World Wildlife Foundation (WWF) to raise awareness and support for rhinoceros conservation efforts, successfully securing funds to aid in the preservation of endangered species.",
+        "Participated in the Model United Nations (MUN) debate competition, representing my school at various levels and advancing to the global rounds, where I engaged in discussions on international issues and diplomacy.",
+        "Volunteered at a local orphanage, teaching English to Indonesian students, helping to improve their language skills and providing them with educational support."
       ],
     },
   ];

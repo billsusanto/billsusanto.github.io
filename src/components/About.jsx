@@ -17,7 +17,7 @@ const ServiceCard = ({ index, title, icon, back }) => {
 
   return (
     <Tilt className="flex flex-row xs:w-[100px] xs:h-[100px] sm:w-[150px] sm:h-[150px] md:w-[150px] md:h-[200px] lg:w-[250px] lg:h-[300px]">
-      <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)} className='min-w-[100px] w-full p-[1px] rounded-[20px] shadow-card service-card' onClick={handleClick}>
+      <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)} className='min-w-[100px] w-full p-[1px] rounded-[20px] service-card' onClick={handleClick}>
         <div className={`flip-card ${flipped ? 'flipped' : ''}`}>
           <div className="flip-card-inner">
             <div className="flip-card-front">
@@ -34,9 +34,9 @@ const ServiceCard = ({ index, title, icon, back }) => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className='back-content bg-teal rounded-[20px] py-5 px-15 min-h-[180px] flex justify-evenly items-center flex-col xs:text-[20px] sm:text-[25px] md:text-[30px] xl:text-[30px]'
+                className='back-content bg-teal rounded-[20px] py-5 px-15 xl:min-h-[350px] flex justify-evenly items-center flex-col xs:text-[20px] sm:text-[25px] md:text-[30px] xl:text-[30px]'
               >
-                <h3 className='text-white font-bold xs:text-[10px] sm:text-[15px] md:text-[20px] xl:text-[25px] text-[12px]'>{back}</h3>
+                <h3 className='text-white font-bold xs:min-h-[150px] sm:min-h-[150px] md:min-h-[160px] xs:text-[10px] sm:text-[15px] md:text-[15px] xl:text-[25px] text-[12px] p-3'>{back}</h3>
               </motion.div>
             </div>
           </div>
@@ -64,7 +64,7 @@ const About = () => {
 
       <div className="flex justify-center">
         <div className="mt-0 md:mt-10 xl:mt-25">
-          <div className="flex flex-wrap justify-center gap-20 min-h-[400px] min-w-[200px]">
+          <div className="flex flex-wrap justify-center gap-10 min-h-[400px] min-w-[200px]">
             {services.map((service, index, back) => (
               <ServiceCard key={service.title} index={index} back={back} {...service} />
             ))}

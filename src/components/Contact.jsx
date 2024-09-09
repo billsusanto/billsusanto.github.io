@@ -60,7 +60,6 @@ const Contact = () => {
       className='flex-[0.75] p-8 rounded-2xl'
       style={{ backgroundColor: '#5A5A5A'}}
       >
-        {/* <p className={styles.sectionSubText}>Get in touch</p> */}
         <h3 className="text-white font-bold md:text-[40px] sm:text-[30px] xs:text-30px] text-[30px]">Recruit Me!</h3>
 
         <form
