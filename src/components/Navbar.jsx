@@ -64,7 +64,7 @@ const Navbar = () => {
                 <a href="https://billybot-v1.vercel.app/" target="_blank" rel="noopener noreferrer">Billybot</a>
               ) :
               Link.id === "resume" ? (
-                <a href="https://docs.google.com/document/d/1IsKs6eVtRgng6nqWCxHrEPjoT2UefLPxH3rz9iifzyE/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="https://drive.google.com/file/d/1r96TeJ7oiOPqT4IIokR67fnhK-WQIrVZ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
               ) : (
                 <a href={`#${Link.id}`}>{Link.title}</a>
               )}
