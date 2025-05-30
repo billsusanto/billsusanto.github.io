@@ -8,7 +8,7 @@ import { menu, close } from "../assets";
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [pastExperienceSection, setPastExperienceSection] = useState(false);
   const lastScrollY = useRef(0);
   const scrollingUp = useRef(false);
@@ -72,9 +72,9 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
+      } w-full flex items-center py-5 fixed top-0 z-50 pointer-events-auto transition-all duration-300 ${
         !isVisible || !pastExperienceSection
-          ? "opacity-0 -translate-y-full pointer-events-none"
+          ? "opacity-0 -translate-y-full"
           : "opacity-100 translate-y-0"
       }`}
     >
@@ -99,7 +99,10 @@ const Navbar = () => {
               className={`${
                 active === Link.title ? "text-white" : "text-white"
               } hover:text-white text-[15px] font-karla cursor-pointer`}
-              onClick={() => setActive(Link.title)}
+              onClick={() => {
+                console.log(`Clicking on ${Link.id}`);
+                setActive(Link.title);
+              }}
             >
               {Link.id === "billybot" ? (
                 <a
@@ -114,7 +117,6 @@ const Navbar = () => {
                   href="https://drive.google.com/file/d/1KMba6QcTri1FsRY_Ga7oUQrOlSrX0Qes/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
                 >
                   Resume
                 </a>
@@ -145,6 +147,7 @@ const Navbar = () => {
                     active === Link.title ? "text-black" : "text-black"
                   } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
+                    console.log(`Clicking on mobile ${Link.id}`);
                     if (Link.id === "billybot" || Link.id === "resume") {
                       handleLinkClick(Link);
                     } else {
