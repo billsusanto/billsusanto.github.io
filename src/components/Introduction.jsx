@@ -1,78 +1,109 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "../index.css";
-import StarsCanvas from "./canvas/Stars";
-import { spaceship } from "../assets";
+import { motion } from "framer-motion";
+import { fadeIn } from "../utils/motion";
+import { profilePicture } from "../assets";
+import { mediaApplications } from "../constants";
+
+const IntroductionCard = () => {
+  return (
+    <motion.div
+      variants={fadeIn("up", "spring", 0.2, 0.75)}
+      className="holographic-card"
+    >
+      <div className="card-inner">
+        <div className="card-content flex flex-col md:flex-row items-center md:items-start gap-10">
+          <div className="md:order-1 mb-8 md:mb-0 flex flex-col items-center">
+            <div className="profile-picture-wrapper">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-white/30 shadow-glow profile-picture-container mx-auto">
+                <img
+                  src={profilePicture}
+                  alt="Bill Susanto"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="profile-glow"></div>
+            </div>
+          </div>
+
+          <div className="md:order-2 w-full text-center md:text-left">
+            <h3 className="text-white text-4xl md:text-5xl font-bold mb-2 tracking-wider glow-text">
+              Bill Susanto
+            </h3>
+
+            <div className="profile-social mb-6 flex justify-center md:justify-start gap-3">
+              {mediaApplications.map((app, index) => (
+                <a
+                  key={index}
+                  href={app.hyperlink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                  title={app.name}
+                >
+                  <img
+                    src={app.icon}
+                    alt={`${app.name} Icon`}
+                    className="w-5 h-5"
+                  />
+                </a>
+              ))}
+            </div>
+
+            <div className="text-white text-sm md:text-base space-y-4 max-w-2xl">
+              <p className="leading-relaxed text-lg">
+                Computer Science graduate at{" "}
+                <span className="text-white font-medium">
+                  University of California, Irvine
+                </span>{" "}
+              </p>
+              <p className="leading-relaxed">
+                Passionate about software development with experience in
+                full-stack web development, mobile applications, and AI
+                projects.
+              </p>
+              <div className="py-2">
+                <h4 className="text-sm uppercase tracking-wider text-white/80 mb-2">
+                  TECHNICAL SKILLS
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="holographic-badge">Python</span>
+                  <span className="holographic-badge">JavaScript</span>
+                  <span className="holographic-badge">React</span>
+                  <span className="holographic-badge">Node.js</span>
+                  <span className="holographic-badge">Java</span>
+                  <span className="holographic-badge">C++</span>
+                </div>
+              </div>
+              <p className="leading-relaxed">
+                Seeking software engineering internship opportunities to apply
+                and enhance my skills in real-world contexts.
+              </p>
+              <div className="mt-8 pt-4 border-t border-white/20">
+                <a
+                  href="https://drive.google.com/file/d/1KMba6QcTri1FsRY_Ga7oUQrOlSrX0Qes/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="holographic-button"
+                >
+                  View Resume
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="card-light-effect"></div>
+    </motion.div>
+  );
+};
 
 const Introduction = () => {
-  const [showScrollText, setShowScrollText] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [showSpaceship, setShowSpaceship] = useState(false);
-
-  useEffect(() => {
-    const crawlAnimationDuration = 10 * 1000; // Duration of crawl animation in milliseconds
-    const timeout = setTimeout(() => {
-      setShowScrollText(true);
-    }, crawlAnimationDuration);
-
-    const spaceshipTimeout = setTimeout(() => {
-      setShowSpaceship(true);
-    }, 9000); // Show spaceship after 10 seconds
-
-    if (isClicked) {
-      const timeout2 = setTimeout(() => {
-        setIsClicked(false);
-      }, crawlAnimationDuration + 2000); // Wait for the initial crawl animation to finish before starting the second crawl
-
-      return () => {
-        clearTimeout(timeout);
-        clearTimeout(timeout2);
-      };
-    }
-
-    return () => {
-      clearTimeout(timeout);
-      clearTimeout(spaceshipTimeout);
-    };
-  }, [isClicked]);
-
-  const handleSpaceshipClick = () => {
-    setIsClicked(true);
-
-    setTimeout(() => {
-      const targetSection = document.getElementById("About");
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-      }
-      setShowSpaceship(false);
-    }, 2000);
-  };
-
   return (
-    <div className="introduction">
-      <StarsCanvas />
-      <div className={`crawl ${showScrollText ? "hide" : ""}`}>
-        <p>Greetings Cyber Traveller,</p>
-        <p>My name is Bill</p>
-        <p>Welcome to my digital realm,</p>
-        <p>Where code becomes art,</p>
-        <p>And pixels tell stories.</p>
-        <p>Join me on this journey</p>
-        <p>Through the realm of algorithms</p>
-        <p>And the landscapes of creativity.</p>
+    <div className="introduction relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="w-full max-w-6xl mx-auto px-4 z-10 relative">
+        <IntroductionCard />
       </div>
-
-      {showSpaceship && (
-        <img
-          src={spaceship}
-          alt="Spaceship"
-          className={`spaceship ${isClicked ? "crawl-bottom" : ""}`}
-          onClick={handleSpaceshipClick}
-        />
-      )}
-
-      {showScrollText && (
-        <p className="scroll-text">Click the Ship to<br/>Start Adventure</p>
-      )}
     </div>
   );
 };

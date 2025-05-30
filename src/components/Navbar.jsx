@@ -1,33 +1,67 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-import { styles } from '../styles';
-import { navLinks } from '../constants';
-import { menu, close } from '../assets';
+import { styles } from "../styles";
+import { navLinks } from "../constants";
+import { menu, close } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const [pastExperienceSection, setPastExperienceSection] = useState(false);
+  const lastScrollY = useRef(0);
+  const scrollingUp = useRef(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+    const checkPosition = () => {
+      const currentScrollY = window.scrollY;
 
-      if (scrollPosition < currentScrollPos && currentScrollPos > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
+      // Get the Experience section position
+      const experienceSection = document.getElementById("work");
+
+      if (experienceSection) {
+        // Get section position relative to the page
+        const experienceSectionPosition =
+          experienceSection.getBoundingClientRect();
+
+        // Check if we're past the experience section
+        // This checks if the top of the section is above the viewport
+        const isPastExperience = experienceSectionPosition.top <= 0;
+
+        // Update scrolling direction
+        scrollingUp.current = currentScrollY < lastScrollY.current;
+
+        // Update state based on section position
+        if (isPastExperience) {
+          setPastExperienceSection(true);
+
+          // When past Experience section, only show navbar when scrolling up
+          setIsVisible(scrollingUp.current);
+        } else {
+          // Before experience section, always hide navbar
+          setPastExperienceSection(false);
+          setIsVisible(false);
+        }
       }
 
-      setScrollPosition(currentScrollPos);
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Check position on scroll
+    window.addEventListener("scroll", checkPosition);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollPosition]);
+    // Check position on resize too
+    window.addEventListener("resize", checkPosition);
+
+    // Initial check
+    checkPosition();
+
+    return () => {
+      window.removeEventListener("scroll", checkPosition);
+      window.removeEventListener("resize", checkPosition);
+    };
+  }, []);
 
   const handleLinkClick = (Link) => {
     setActive(Link.title);
@@ -36,35 +70,54 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-opacity-50 transition-opacity duration-500 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+      className={`${
+        styles.paddingX
+      } w-full flex items-center py-5 fixed top-0 z-20 transition-all duration-300 ${
+        !isVisible || !pastExperienceSection
+          ? "opacity-0 -translate-y-full pointer-events-none"
+          : "opacity-100 translate-y-0"
       }`}
     >
-      <div className='w-full flex justify-between items-center max-w-7x1 mx-auto'>
-        <Link to="/" className='flex items-center gap-2' onClick={() => {
-          setActive("");
-          window.scrollTo(0, 0);
-        }}>
-          <p className='text-white text-[18px] font-karla cursor-pointer flex'>
+      <div className="w-full flex justify-between items-center max-w-7x1 mx-auto">
+        <Link
+          to="/"
+          className="flex items-center gap-2"
+          onClick={() => {
+            setActive("");
+            window.scrollTo(0, 0);
+          }}
+        >
+          <p className="text-white text-[18px] font-karla cursor-pointer flex">
             BILL SUSANTO
           </p>
         </Link>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
+        <ul className="list-none hidden sm:flex flex-row gap-10">
           {navLinks.map((Link) => (
             <li
               key={Link.id}
-              className={`${active === Link.title ? "text-white" : "text-white"} hover:text-white text-[15px] font-karla cursor-pointer`}
+              className={`${
+                active === Link.title ? "text-white" : "text-white"
+              } hover:text-white text-[15px] font-karla cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
-              {Link.id === "coba" ? (
-                <a href="https://github.com/billsusanto/Coba" target="_blank" rel="noopener noreferrer">Coba</a>
-              ) :
-              Link.id === "billybot" ? (
-                <a href="https://billybot-v1.vercel.app/" target="_blank" rel="noopener noreferrer">Billybot</a>
-              ) :
-              Link.id === "resume" ? (
-                <a href="https://drive.google.com/file/d/1r96TeJ7oiOPqT4IIokR67fnhK-WQIrVZ/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+              {Link.id === "billybot" ? (
+                <a
+                  href="https://billybot-v1.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Billybot
+                </a>
+              ) : Link.id === "resume" ? (
+                <a
+                  href="https://drive.google.com/file/d/1KMba6QcTri1FsRY_Ga7oUQrOlSrX0Qes/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+                >
+                  Resume
+                </a>
               ) : (
                 <a href={`#${Link.id}`}>{Link.title}</a>
               )}
@@ -72,19 +125,25 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
+        <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
             src={toggle ? close : menu}
             alt="menu"
-            className='w-[28px] h-[28px] object-contain cursor-pointer'
+            className="w-[28px] h-[28px] object-contain cursor-pointer"
             onClick={() => setToggle(!toggle)}
           />
-          <div className={`${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-10 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
-            <ul className='list-none flex justify-end items-start flex-col gap-4'>
+          <div
+            className={`${
+              !toggle ? "hidden" : "flex"
+            } p-6 black-gradient absolute top-10 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+          >
+            <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((Link) => (
                 <li
                   key={Link.id}
-                  className={`${active === Link.title ? "text-black" : "text-black"} font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${
+                    active === Link.title ? "text-black" : "text-black"
+                  } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     if (Link.id === "billybot" || Link.id === "resume") {
                       handleLinkClick(Link);
@@ -95,10 +154,21 @@ const Navbar = () => {
                   }}
                 >
                   {Link.id === "billybot" ? (
-                    <a href="https://billybot-v1.vercel.app/" target="_blank" rel="noopener noreferrer">Billybot</a>
-                  ) :
-                  Link.id === "resume" ? (
-                    <a href="https://drive.google.com/file/d/1RfRfblU9LEnb7wrLCY31gCEYKdUwi0qU/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+                    <a
+                      href="https://billybot-v1.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Billybot
+                    </a>
+                  ) : Link.id === "resume" ? (
+                    <a
+                      href="https://drive.google.com/file/d/1KMba6QcTri1FsRY_Ga7oUQrOlSrX0Qes/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Resume
+                    </a>
                   ) : (
                     <a href={`#${Link.id}`}>{Link.title}</a>
                   )}

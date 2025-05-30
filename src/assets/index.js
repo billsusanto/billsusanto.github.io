@@ -10,6 +10,7 @@ import teamwork from "./teamwork.png";
 import armory from "./armory.png";
 import cityskyline from "./City Skyline.png";
 import spaceship from "./spaceship.png";
+import profilePicture from "./images/Studio_ghibli_profile_picture.png";
 
 import menu from "./menu.svg";
 import close from "./close.svg";
@@ -60,19 +61,16 @@ export {
   logo,
   backend,
   creator,
-
   fast,
   efficient,
   discipline,
   teamwork,
-
   armory,
   cityskyline,
   spaceship,
-
+  profilePicture,
   menu,
   close,
-
   css,
   docker,
   figma,
@@ -86,11 +84,9 @@ export {
   tailwind,
   typescript,
   threejs,
-
   fossasia,
   commando,
   thecoderschool,
-
   meta,
   shopify,
   starbucks,
@@ -103,14 +99,12 @@ export {
   csharp,
   java,
   golang,
-
   instagram,
   linkedin,
   github,
   calendy,
-
   sis,
   nyjc,
   pcc,
-  uci
+  uci,
 };
