@@ -87,9 +87,10 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <p className="text-white text-[18px] font-karla cursor-pointer flex">
-            BILL SUSANTO
-          </p>
+          <div className="text-white text-[14px] sm:text-[18px] font-karla cursor-pointer flex flex-col sm:flex-row sm:gap-1 items-start sm:items-center navbar-brand-mobile">
+            <span>BILL</span>
+            <span>SUSANTO</span>
+          </div>
         </Link>
 
         <ul className="list-none hidden sm:flex flex-row gap-10">

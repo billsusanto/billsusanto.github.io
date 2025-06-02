@@ -133,6 +133,19 @@ body {
   color: #ff675c; /* Set the active link color to the primary color */
 }
 
+/* Add styling for navbar brand on mobile */
+@media (max-width: 639px) {
+  .navbar-brand-mobile {
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    font-size: 14px; /* Further reduce font size on mobile */
+  }
+
+  .navbar-brand-mobile span:first-child {
+    margin-bottom: 0px;
+  }
+}
+
 .bg-baby-blue {
   background-color: #effbfd;
 }
@@ -152,6 +165,25 @@ body {
   background-color: transparent; /* Remove the background color completely */
   position: relative;
   padding: 0 1rem;
+}
+
+/* Adjust introduction container to fix mobile display */
+@media (max-width: 767px) {
+  .introduction {
+    height: auto;
+    min-height: 100vh;
+    padding: 60px 0; /* Remove horizontal padding from the container */
+    justify-content: flex-start; /* Align content to top on mobile */
+    overflow-x: hidden;
+    overflow-y: auto; /* Allow vertical scrolling if needed */
+  }
+
+  .introduction > div {
+    width: 100%; /* Ensure full width of container */
+    padding: 0; /* Remove any padding in the direct child div */
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+  }
 }
 
 .stars-container {
@@ -504,6 +536,41 @@ body {
   z-index: 10;
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
+}
+
+/* Add mobile-specific styles for the holographic card */
+@media (max-width: 767px) {
+  .holographic-card {
+    min-height: auto; /* Remove fixed height constraint */
+    padding: 5px; /* Reduce padding */
+    margin: 30px auto; /* Center horizontally with auto margins */
+    max-width: 95%; /* Control the width with percentage */
+    width: 95%; /* Take up most of the parent width but not all */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  .card-inner {
+    padding: 1.5rem; /* Reduce padding on mobile */
+  }
+
+  /* Make badges smaller and more compact on mobile */
+  .holographic-badge {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    margin: 0.1rem;
+  }
+
+  /* Make button more compact on mobile */
+  .holographic-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust social icons for mobile */
+  .social-icon {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .card-inner {
